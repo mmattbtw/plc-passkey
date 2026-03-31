@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@atproto/api": "^0.19.5",
+    "@atproto/oauth-client-browser": "^0.3.41",
+    "@ipld/dag-cbor": "^9.2.5",
     "@noble/curves": "^2.0.1",
     "@noble/hashes": "^2.0.1",
     "multiformats": "^13.4.2",

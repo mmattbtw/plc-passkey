@@ -67,6 +67,11 @@ export function fromBase64Url(value: string) {
   return Uint8Array.from(atob(padded), (char) => char.charCodeAt(0))
 }
 
+export function signBytesWithRotationKey(privateKey: Uint8Array, bytes: Uint8Array) {
+  const signature = secp256k1.sign(bytes, privateKey)
+  return toBase64Url(signature)
+}
+
 async function getPrfSalt() {
   return crypto.subtle.digest(
     'SHA-256',

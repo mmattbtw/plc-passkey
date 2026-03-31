@@ -387,6 +387,37 @@
   background: rgba(255, 255, 255, 0.04);
 }
 
+.field textarea {
+  width: 100%;
+  min-height: 8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--text);
+  padding: 0.7rem 0.85rem;
+  font: inherit;
+  font-size: 0.9rem;
+  resize: vertical;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.field textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.field-help {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
 /* ── Buttons ──────────────────────────────────────────── */
 
 .button-row {
@@ -607,6 +638,46 @@
 .details-block[open] summary {
   color: var(--accent);
   margin-bottom: 0.85rem;
+}
+
+.editor-toggle-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.toggle-chip {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 0.5rem 0.85rem;
+  font: inherit;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.toggle-chip.active {
+  border-color: rgba(0, 212, 170, 0.35);
+  color: var(--accent);
+  background: var(--accent-glow);
+}
+
+.toggle-chip.danger.active {
+  border-color: rgba(255, 71, 87, 0.3);
+  color: var(--error);
+  background: var(--error-glow);
+}
+
+.code-textarea {
+  min-height: 18rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  line-height: 1.5;
 }
 
 /* ── Footer ───────────────────────────────────────────── */
