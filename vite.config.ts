@@ -60,7 +60,12 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
 
   return {
-    plugins: [react(), createOAuthMetadataPlugin(env.VITE_PUBLIC_URL)],
+    plugins: [
+      react(),
+      createOAuthMetadataPlugin(
+        env.VITE_PUBLIC_URL ?? "https://plc-passkey.wisp.place",
+      ),
+    ],
     server: {
       allowedHosts: ["50da-161-45-254-242.ngrok-free.app"],
     },
