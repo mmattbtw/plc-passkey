@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap");
 
 :root {
   --bg: #08080c;
@@ -32,9 +32,9 @@
   --shadow-strong: 0 16px 48px rgba(0, 0, 0, 0.4);
   --shadow-glow: 0 0 40px rgba(0, 212, 170, 0.06);
 
-  --sans: 'DM Sans', system-ui, sans-serif;
-  --display: 'Syne', sans-serif;
-  --mono: 'JetBrains Mono', monospace;
+  --sans: "DM Sans", system-ui, sans-serif;
+  --display: "Syne", sans-serif;
+  --mono: "JetBrains Mono", monospace;
 
   --radius-sm: 6px;
   --radius: 10px;
@@ -89,7 +89,6 @@ p {
 h1 {
   font-family: var(--display);
   font-weight: 800;
-  font-size: clamp(2.8rem, 7vw, 4.8rem);
   line-height: 1;
   letter-spacing: -0.03em;
   color: var(--text);
@@ -105,8 +104,14 @@ code {
   background: var(--surface);
   padding: 0.15em 0.4em;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
   color: var(--accent);
+}
+
+pre code,
+.mono-block code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
 }
 
 pre {
@@ -143,13 +148,22 @@ pre {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes pulseGlow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 @keyframes slideInLeft {
@@ -160,5 +174,17 @@ pre {
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes spinPulse {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
   }
 }
