@@ -805,6 +805,15 @@ function App() {
     setView('home')
   }
 
+  function submitOnEnter(handler: () => void) {
+    return (e: React.KeyboardEvent) => {
+      if (e.key === 'Enter') {
+        e.preventDefault()
+        handler()
+      }
+    }
+  }
+
   const canUseWebAuthn = isWebAuthnAvailable()
   const plcSupportError =
     agentRef.current?.auth.kind === 'oauth' &&
@@ -934,6 +943,7 @@ function App() {
                   id="plc-identifier"
                   value={plcIdentifier}
                   onChange={(e) => setPlcIdentifier(e.target.value)}
+                  onKeyDown={submitOnEnter(() => void handleLoadPlcDocument())}
                   placeholder="alice.bsky.social or did:plc:..."
                 />
               </div>
@@ -1011,6 +1021,7 @@ function App() {
                     id="credential-id-direct"
                     value={credentialId}
                     onChange={(e) => setCredentialId(e.target.value)}
+                    onKeyDown={submitOnEnter(() => void handleUseSpecificPlcPasskey())}
                     placeholder="Base64url-encoded credential ID"
                   />
                   <div className="small-actions">
@@ -1142,6 +1153,7 @@ function App() {
                     <input
                       id="safe-pds-endpoint"
                       value={plcSafeDraft.pdsEndpoint}
+                      onKeyDown={submitOnEnter(() => void handleSubmitDirectPlc())}
                       onChange={(e) =>
                         setPlcSafeDraft((current) => ({
                           ...current,
@@ -1280,6 +1292,7 @@ function App() {
                   id="identifier"
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
+                  onKeyDown={submitOnEnter(() => void handleOAuthLogin())}
                   placeholder="alice.bsky.social or did:plc:..."
                 />
               </div>
@@ -1306,6 +1319,7 @@ function App() {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    onKeyDown={submitOnEnter(() => void handleLogin())}
                     placeholder="Account password"
                   />
                 </div>
@@ -1316,6 +1330,7 @@ function App() {
                     id="pds-url"
                     value={pdsUrl}
                     onChange={(e) => setPdsUrl(e.target.value)}
+                    onKeyDown={submitOnEnter(() => void handleLogin())}
                     placeholder="Leave blank to auto-resolve"
                   />
                   <span className="field-help">
@@ -1384,6 +1399,7 @@ function App() {
                     id="credential-id-register"
                     value={credentialId}
                     onChange={(e) => setCredentialId(e.target.value)}
+                    onKeyDown={submitOnEnter(() => void handleDeriveKey())}
                     placeholder="Base64url-encoded credential ID"
                   />
                   <div className="small-actions">
@@ -1429,6 +1445,7 @@ function App() {
                   id="passkey-label"
                   value={passkeyLabel}
                   onChange={(e) => setPasskeyLabel(e.target.value)}
+                  onKeyDown={submitOnEnter(() => void handleCreatePasskey())}
                   placeholder="PLC rotation key"
                 />
                 <span className="field-help">Only used when creating a new passkey.</span>
@@ -1477,6 +1494,7 @@ function App() {
                   id="signature-token"
                   value={signatureToken}
                   onChange={(e) => setSignatureToken(e.target.value)}
+                  onKeyDown={submitOnEnter(() => void handleAddRotationKey())}
                   placeholder="Optional — only if your PDS requires one"
                 />
               </div>
@@ -1569,6 +1587,7 @@ function App() {
                     id="credential-id"
                     value={credentialId}
                     onChange={(e) => setCredentialId(e.target.value)}
+                    onKeyDown={submitOnEnter(() => void handleDeriveKey())}
                     placeholder="Base64url-encoded credential ID"
                   />
                   <div className="small-actions">
